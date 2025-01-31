@@ -1,2 +1,3 @@
 rootProject.name = 'PoC-projects'
+include 'springboot-jsp-tiles-demo'
 
