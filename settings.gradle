@@ -1,3 +1,4 @@
 rootProject.name = 'PoC-projects'
 include 'springboot-jsp-tiles-demo'
+include 'converted-springboot-jsp-tiles-demo-to-plain-html-js'
 
