@@ -2,14 +2,20 @@ package uk.ac.ebi.atlas.tilesdemo;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ThymeLeafPageController {
 
-    @RequestMapping("/thymeleaf")
-    public String index(Model model) {
+    @GetMapping("/simple_thymeleaf")
+    public String simple_thymeleaf(Model model) {
         model.addAttribute("message", "Hello, ThymeLeaf World!");
-        return "thymeleaf";
+        return "simple_thymeleaf";
+    }
+
+    @GetMapping("/composite_thymeleaf")
+    public String composite_thymeleaf(Model model) {
+        model.addAttribute("message", "Hello, composite ThymeLeaf World!");
+        return "composite_thymeleaf";
     }
 }
