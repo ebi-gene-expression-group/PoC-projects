@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HelloController {
 
-    @GetMapping("/welcome")
-    public String welcome() {
-        return "welcome";
+    @GetMapping("/jsp_with_tiles")
+    public String jsp_with_tiles() {
+        return "jsp_with_tiles";
     }
 
-    @GetMapping("/welcome2")
+    @GetMapping("/simple_html")
     public String welcomeHTML() {
-        return "welcome2";
+        return "simple_html";
     }
 }

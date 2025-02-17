@@ -8,8 +8,13 @@ import org.springframework.core.annotation.Order;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.UrlBasedViewResolver;
+import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
+import org.springframework.web.servlet.view.tiles3.TilesView;
+import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 @Configuration
 @EnableWebMvc
@@ -18,7 +23,7 @@ public class WebConfig implements WebMvcConfigurer {
     private static final Logger LOGGER = LoggerFactory.getLogger(WebConfig.class);
 
     @Bean
-    @Order(0)
+    @Order(1)
     public ViewResolver resourceViewResolver() {
         var resolver = new InternalResourceViewResolver();
         resolver.setPrefix("/WEB-INF/views/");
@@ -31,5 +36,44 @@ public class WebConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**", "/WEB-INF/views/**")
             .addResourceLocations("classpath:/static/", "classpath:/WEB-INF/views/**");
+    }
+
+    @Bean
+    public ViewResolver jspViewResolver() {
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        viewResolver.setPrefix("/WEB-INF/jsp/");
+        viewResolver.setSuffix(".jsp");
+        return viewResolver;
+    }
+
+    @Bean
+    public TilesConfigurer tilesConfigurer() {
+        TilesConfigurer configurer = new TilesConfigurer();
+        configurer.setDefinitions("classpath:/views.xml");
+        LOGGER.info("Reading Tiles config");
+        return configurer;
+    }
+
+    @Bean
+    @Order(0)
+    public UrlBasedViewResolver urlBasedViewResolver() {
+        UrlBasedViewResolver resolver = new UrlBasedViewResolver();
+        resolver.setViewClass(TilesView.class);
+        LOGGER.info("Reading view resolver");
+        return resolver;
+    }
+
+    @Bean
+    public ViewResolver tilesViewResolver() {
+        TilesViewResolver viewResolver = new TilesViewResolver();
+        viewResolver.setOrder(1);
+        return viewResolver;
+    }
+
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+        registry.viewResolver(jspViewResolver());
+        registry.viewResolver(tilesViewResolver());
+        registry.viewResolver(resourceViewResolver());
     }
 }

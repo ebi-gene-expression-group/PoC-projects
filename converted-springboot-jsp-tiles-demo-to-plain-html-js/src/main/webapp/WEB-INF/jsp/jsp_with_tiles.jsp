@@ -8,15 +8,15 @@
     <title><tiles:insertAttribute name="title" /></title>
 
 </head>
-<body>
+<body style="background-color: grey">
 
-<p style="color: red"><i><tiles:insertAttribute name="header" /></i></p>
+<p style="color: whitesmoke"><i><tiles:insertAttribute name="header" /></i></p>
 <br />
 <p><tiles:insertAttribute name="body" /></p>
 <br />
 <p style="color: coral"><i><tiles:insertAttribute name="footer" /></i></p>
 <br />
-<p style="color: darkgreen">Go back to the <a href="${pageContext.request.contextPath}/convertedtilesdemo/">Home page</a>.</p>
+<p style="color: darkgreen">Go back to the <a href="${pageContext.request.contextPath}/">Home page</a>.</p>
 
 </body>
 </html>
