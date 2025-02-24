@@ -1,0 +1,17 @@
+<html th:fragment="base(title, links, page_content)" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments/base_header_fragment :: common_header(${title}, ${links})}">
+    <title th:replace="${title}"></title>
+</head>
+<body style="background-color: orange">
+
+<div th:replace="fragments/fragments :: header"></div>
+
+<div th:utext="${message}"></div>
+
+<div th:replace="${page_content}"></div>
+
+<div th:replace="fragments/fragments :: footer"></div>
+
+<p style="color: greenyellow">Go back to the <a href="/convertedtilesdemo/">Home page</a>.</p>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<head th:fragment="common_header(title, links)">
+    <meta charset="UTF-8">
+    <title th:text="${title}">Title</title>
+
+    <meta name="description" content="EMBL-EBI Expression Atlas, an open public repository of gene expression pattern data under different biological conditions">
+    <meta name="keywords" content="expression atlas, gene expression, baseline expression, differential expression, functional genomics, public repository, repository, bioinformatics, europe, institute">
+    <meta name="author" content="EBI Gene Expression Team – https://www.ebi.ac.uk/about/people/irene-papatheodorou">
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="width" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#70BDBD"> <!-- Android Chrome mobile browser tab color -->
+
+    <link rel="dns-prefetch" href="https://www.ebi.ac.uk/scxa">
+    <link rel="dns-prefetch" href="https://www.ebi.ac.uk/arrayexpress/">
+    <link rel="dns-prefetch" href="https://www.ebi.ac.uk/">
+    <link rel="dns-prefetch" href="https://embl.de/">
+
+    <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/css/ebi-global.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Icon-fonts/v1.3/fonts.css" type="text/css" media="all" />
+
+    <link rel="stylesheet" href="/css/foundation/atlas.css" type="text/css" media="all">
+    <link rel="stylesheet" href="/css/foundation/theme-atlas.css" type="text/css" media="all">
+
+    <!--/* Per-page placeholder for additional links */-->
+    <th:block th:replace="${links}" />
+</head>

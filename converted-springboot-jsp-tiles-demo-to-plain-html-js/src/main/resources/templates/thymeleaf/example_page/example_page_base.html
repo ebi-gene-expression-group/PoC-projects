@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html th:replace="~{fragments/base_page :: base(${title}, ~{::link}, 'example_page/example_page_content') }"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Composite Thymeleaf Template from HTML</title>
+    <link rel="stylesheet" th:href="@{~/css/aa.css}" type="text/css" media="all"/>
+    <link rel="stylesheet" th:href="@{~/css/bb.css}" type="text/css" media="all"/>
+</head>
+</html>

@@ -18,4 +18,13 @@ public class ThymeLeafPageController {
         model.addAttribute("message", "Hello, composite ThymeLeaf World!");
         return "composite_thymeleaf";
     }
+
+    @GetMapping("/composite_thymeleaf_extends_base")
+    public String composite_thymeleaf_with_header_fragment(Model model) {
+        model.addAttribute("title",
+            "Thymeleaf Example with header fragment and base");
+        model.addAttribute("message",
+            "Hello, composite ThymeLeaf World!<br/>This message is coming from the Java controller class.");
+        return "example_page/example_page_base";
+    }
 }
